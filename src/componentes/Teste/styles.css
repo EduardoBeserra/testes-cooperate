@@ -1,0 +1,70 @@
+.teste-item {
+    display: flex;
+    padding-top: 2px;
+    font-size: 13px;
+}
+
+.flg-ok {
+    color: #64d464;
+}
+
+.flg-erro {
+    color: #f05656;
+}
+
+.tempo {
+    color: gray;
+    border: 0;
+    padding-left: 5px;
+}
+
+.btn-item {
+    background-color: white;
+    border: 0;
+    cursor: pointer;
+}
+
+.content-testes {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-template-rows: 1fr;
+    grid-template-areas: "content-left content-right";
+}
+
+.content-testes-right {
+    grid-area: content-right;
+    border-left: 1px;
+    display: grid;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: 1fr;
+}
+
+.content-testes-left {
+    grid-area: content-left;
+    display: grid;
+    grid-template-rows: 1fr 40px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "teste-list" "teste-totais";
+}
+
+.teste-list {
+    list-style: none;
+    grid-area: teste-list;
+}
+
+.teste-totais {
+    grid-area: teste-totais;
+    margin-left: 10px;
+    font-size: 13px;
+    display: flex;
+}
+
+.teste-totais .teste-ok {
+    margin-left: 10px;
+    color: #64d464;
+}
+
+.teste-totais .teste-erro {
+    margin-left: 10px;
+    color: #f06b6b;
+}

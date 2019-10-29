@@ -1,0 +1,17 @@
+.menu-area select {
+    margin: 5px;
+    border-radius: 5px;
+    height: 35px;
+    padding: 0 15px;
+    font-size: 14px;
+}
+
+.menu-area ul {
+    list-style: none;
+}
+
+.btn-teste {
+    background-color: #b1c7d3;
+    border: 0;
+    cursor: pointer;
+}
