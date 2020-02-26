@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import TelaContent from './TelaContent'
 import Nav from '../menu/Nav'
 import { tratarSolTeste } from "../../regras/regrasTestes";
-import { getArquivos } from "../../regras/util/arquivo";
+import { getArquivos, download } from "../../regras/util/arquivo";
 
 import stringTipos from '../../stringTipos'
 import { getBase } from "../../regras/regrasBases";
@@ -15,6 +15,7 @@ export default () => {
     let [dadosContent, setDadosContent] = useState([])
     let [dadosMenu, setDadosMenu] = useState([])
     let [socket, setSocket] = useState({})
+    let [arqdown, setArqDown] = useState('')
 
     useEffect(() => {
         setSocket(new WebSocket('ws://prg01.datacoper.com.br:40580/websocketTeste/ws'))
@@ -36,7 +37,13 @@ export default () => {
         if(msg.includes('testes:')) {
             socket.send(JSON.stringify(await tratarSolTeste(msg)))
         } else if(msg.toLowerCase().includes('listar testes')) {
-            setarDadosMenu('desenv')
+            let base = msg.replace('listar testes', '').trim() || 'desenv'
+            setarDadosMenu(base)
+        } else if(msg.toLowerCase().includes('baixar ')) {
+            setArqDown(msg.replace('baixar', '').trim())
+        } else if(msg.toLowerCase() === 'home') {
+            setTipoMenu('')
+            setTipoContent('')
         }
     }
 
@@ -47,7 +54,8 @@ export default () => {
             b.source_paths.forEach(dir => diretorios += dir + ',')
 
         const testes = await getArquivos('*.spec', diretorios)
-        setDadosMenu(testes)
+        const dados = {base, lista: testes}
+        setDadosMenu(dados)
         setTipoMenu('listar-testes')
     }
 
@@ -60,6 +68,12 @@ export default () => {
         }
     }
 
+    if(arqdown !== '') {
+        let url = `http://prg01.datacoper.com.br:40580/IntegradorProgress/rest/getArquivo?file=${arqdown}`
+        let filename = arqdown.substring(arqdown.lastIndexOf('/') + 1)
+        download(url, filename)
+        setArqDown('')
+    }
     return (
         <>
             <TelaContent tipo={tipoContent} dados={dadosContent} />

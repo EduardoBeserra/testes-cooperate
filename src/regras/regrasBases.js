@@ -1,5 +1,6 @@
 //import axios from 'axios'
-import { bases } from "../../src/arq/bases";
+const arqbases = require("../../src/arq/bases")
+const bases = arqbases.bases
 
 /*
 const URL_BASES = 'http://localhost:3004/bases'
@@ -23,4 +24,4 @@ const getBase = base => {
         return bases[0]
 }
 
-export { getBases, getBase }
+module.exports = { getBases, getBase }

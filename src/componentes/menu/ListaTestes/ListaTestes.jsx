@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { getBases } from "../../../regras/regrasBases";
 
 import stringTipos from '../../../stringTipos'
@@ -6,8 +6,9 @@ import stringTipos from '../../../stringTipos'
 import './ListaTestes.css'
 
 export default props => {
-    const {lista} = props
-    let [baseSel, setBase] = useState('desenv')
+    const {lista} = props.dados
+    const base = props.dados.base || 'desenv'
+    let [baseSel, setBase] = useState(base)
     let bases = getBases()
     let basesList = bases.sort((a, b) => a.name > b.name ? 1 : -1)
 
@@ -15,6 +16,9 @@ export default props => {
         setBase(base)
         props.onChange(base)
     }
+    useEffect(() => {
+        setBase(base)
+    }, [base])
 
     const execTeste = teste => {
         const socket = props.ws

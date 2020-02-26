@@ -38,7 +38,8 @@ module.exports = {
             "db_name": "bomjesus",
             "db_dir": "/usr/pro/d/bomjesus/",
             "name": "bomjesus",
-            "type": "desenv"
+            "type": "desenv",
+            "properties": "BDBomJesusDesenv.properties"
         },
         {
             "source_paths": [
@@ -58,7 +59,19 @@ module.exports = {
             "db_name": "coagrisol",
             "db_dir": "/usr/pro/d/coagrisol/",
             "name": "coagrisol",
-            "type": "desenv"
+            "type": "desenv",
+            "properties": "BDCoagrisolDesenv.properties"
+        },
+        {
+            "source_paths": [
+                "/usr/pro/p/coagrisol/dif/",
+                "/usr/pro/p/coagrisol/"
+            ],
+            "db_name": "coagrisol",
+            "db_dir": "/usr/pro/certificacao/d/coagrisol/",
+            "name": "cert/coagrisol",
+            "type": "cert",
+            "properties": "certificacao/BDCoagrisolCert.properties"
         },
         {
             "source_paths": [
@@ -68,7 +81,8 @@ module.exports = {
             "db_name": "coagro",
             "db_dir": "/usr/pro/d/coagro/",
             "name": "coagro",
-            "type": "desenv"
+            "type": "desenv",
+            "properties": "BDCoagroDesenv.properties"
         },
         {
             "source_paths": [
@@ -108,7 +122,8 @@ module.exports = {
             "db_name": "copasul",
             "db_dir": "/usr/pro/d/copasul/",
             "name": "copasul",
-            "type": "desenv"
+            "type": "desenv",
+            "properties": "BDCopasulDesenv.properties"
         },
         {
             "source_paths": [
@@ -118,7 +133,8 @@ module.exports = {
             "db_name": "copermutum",
             "db_dir": "/usr/pro/d/copermutum/",
             "name": "copermutum",
-            "type": "desenv"
+            "type": "desenv",
+            "properties": "BDCopermutumDesenv.properties"
         },
         {
             "source_paths": [
